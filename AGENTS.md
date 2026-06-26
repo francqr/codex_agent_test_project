@@ -4,7 +4,7 @@ When I ask you to synchronize `dev` and `main`, follow this workflow:
 
 ### Goal
 
-Bring changes from `main` into `dev` first, then merge the updated `dev` back into `main`.
+Bring changes from `main` into `dev` first, then merge the updated `dev` back into `main`. To fully sync both branches, merge `main` into `dev` one last time
 
 ### Required steps
 
@@ -28,29 +28,39 @@ Bring changes from `main` into `dev` first, then merge the updated `dev` back in
 
 6. If there are merge conflicts, stop and ask me how to proceed.
 
-7. Run the project checks or tests if available.
-
-8. Switch to `main`:
+7. Switch to `main`:
 
    git switch main
 
-9. Update `main` from remote:
+8. Update `main` from remote:
 
    git pull --ff-only origin main
 
-10. Merge the synchronized `dev` branch into `main`:
+9. Merge the synchronized `dev` branch into `main`:
 
     git merge --no-ff dev
 
-11. If there are merge conflicts, stop and ask me how to proceed.
+10. If there are merge conflicts, stop and ask me how to proceed.
 
-12. Run the project checks or tests again if needed.
-
-13. Push `main` to origin:
+11. Push `main` to origin:
 
     git push origin main
+	
+12. Switch to `dev`:
 
-14. Report whether the synchronization completed cleanly or required conflict resolution.
+	git switch dev
+	
+13. Merge the synchronized `main` back into `dev`:
+
+	git merge --no-ff main
+	
+14. If there are merge conflicts, stop and ask me how to proceed.
+
+15. Push `dev` to origin:
+
+    git push origin dev
+
+15. Report whether the synchronization completed cleanly or required conflict resolution.
 
 ### Safety rules
 
